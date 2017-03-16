@@ -9,7 +9,7 @@
       <ion-content>
        
         <ion-list>
-            <ion-item ng-repeat="usuario in usuarios">
+            <ion-item ng-repeat="usuario in usuarios track by usuario.id">
               <h2>{{usuario.name}}</h2>
               <p>{{usuario.email}}</p>
 
@@ -19,7 +19,7 @@
               </ion-option-button>
 
               <ion-option-button class="button-positive" ng-click="update(usuario.id)">
-              <i class="icon ion-trash-a"></i>
+              <i class="icon ion-android-create"></i>
               Update
               </ion-option-button>    
 

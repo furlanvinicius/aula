@@ -1,6 +1,13 @@
 app.factory('UsuarioService', function(){
 
-    var usuarios = [
+    const collection = 'usuarios';
+
+    var usuarios = JSON.parse(window.localStorage.getItem('collection') || '[]');
+
+    var persistir = function(){
+        window.localStorage.setItem('collection', JSON.stringify(usuarios));
+    }
+    /*var usuarios = [
         {
             id: 1,
             name: 'Fulano',
@@ -16,26 +23,27 @@ app.factory('UsuarioService', function(){
             name: 'Zé',
             email: 'zesilva@email.com'
         }
-    ]
+    ]*/
 
     return {
 
-        readAll: function(){
+        readAll : function(){
             return usuarios; 
         },
-        read: function(id) {
-            for(var i = 0; 1 < usuarios.length; i++){
+        read : function(id) {
+            for(var i = 0; i < usuarios.length; i++){
                 if(usuarios[i].id == id) {
-                    return usuarios[i];
+                    return angular.copy(usuarios[i]);
                 }
             }
         },
 
-        delete: function(id) {
+        delete : function(id) {
 
-            for(var i=0; 1 < usuarios.length; i++){
+            for(var i=0; i < usuarios.length; i++){
                 if(usuarios[i].id == id) {
                     usuarios.splice(i, 1);
+                    persistir();
                     return;
                 }
             }
@@ -44,6 +52,18 @@ app.factory('UsuarioService', function(){
         create : function(usuario){
             usuario.id= new Date().getTime();
             usuarios.push(usuario);
+            persistir();
+        },
+
+        update: function(usuario){
+            
+            for(var i=0; i < usuarios.length; i++){
+                if(usuarios[i].id == usuario.id) {
+                    usuarios[i]=usuario;
+                    persistir();
+                    return;
+                }
+            }
         }
 
     }
