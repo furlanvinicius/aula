@@ -1,0 +1,31 @@
+<ion-view title="Usuarios">
+      
+      <ion-nav-buttons side="right">
+        <!--<button class="button button-clear">Add</button>-->
+        <button ng-click="showCreate()" class="button button-clear ion-android-person-add"></button>
+      </ion-nav-buttons>
+
+
+      <ion-content>
+       
+        <ion-list>
+            <ion-item ng-repeat="usuario in usuarios">
+              <h2>{{usuario.name}}</h2>
+              <p>{{usuario.email}}</p>
+
+              <ion-option-button class="button-assertive" ng-click="delete(usuario.id)">
+              <i class="icon ion-trash-a"></i>
+              Apagar
+              </ion-option-button>
+
+              <ion-option-button class="button-positive" ng-click="update(usuario.id)">
+              <i class="icon ion-trash-a"></i>
+              Update
+              </ion-option-button>    
+
+            </ion-item>
+        </ion-list>
+
+      </ion-content>
+
+</ion-view>
