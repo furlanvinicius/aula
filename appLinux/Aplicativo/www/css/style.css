@@ -1,0 +1,66 @@
+/* Empty. Add your own CSS if you like */
+
+.headerFeed{
+    height: 40px !important;
+    background-color: white;
+}
+.footerFeed{
+    width: 100%;
+    min-height: 40px;
+    float: left;
+    padding: 0px !important;
+    background-color: white;
+}
+.descFeed{
+    width: 100%;
+    background-color: yellow;
+    float: left
+
+}
+.imgUserFeed{
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    float: left;
+    margin-left: 10px !important;
+   
+}
+
+.usernameFeed{
+    float:left;
+    margin-top: 4px;
+    margin-left: 10px;
+    font-size: 12px !important;
+    font-weight: bold;
+}
+.divImgFeed{
+    width: 100%;
+    float: left;
+    background-color: blue;
+
+}
+.imgFeed{
+    width: 100%;
+    float: left;
+    min-height: 400px;
+}
+.button-heart{
+    background-color: transparent;
+    width: auto;
+    height: 100%;
+    border: none;
+    font-size: 23px;
+}
+.button-chat{
+    background-color: transparent;
+    width: auto;
+    height: 100%;
+    border: none;
+    font-size: 25px;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+.tab-item .icon{
+    font-size: 25px;
+}
