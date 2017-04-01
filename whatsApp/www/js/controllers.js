@@ -25,7 +25,7 @@ app.controller('UsuarioCreateCtrl',
             id: null,
             name: '',
             email:'',
-            senha:''
+            password:''
         };
         
         $scope.salvar = function(usuario){
@@ -45,4 +45,26 @@ app.controller('UsuarioUpdateCtrl',
             UsuarioService.update(usuario);
             $ionicHistory.goBack(-1);
         }
+});
+
+//controler de registro
+app.controller('RegistroCtrl', function($scope, $ionicAuth) {
+
+    $scope.salvar = function(usuario){
+        $ionicAuth.signup(usuario).then(
+            function(){
+                alert('cadastrado');
+            },
+            function(error) {
+                if (error.details[0] == "required_email") {
+                    $ionicPopup.alert({
+                        title: 'Falha no registro',
+                        template: 'Preencha o email'
+                    });
+                } 
+                console.log(error);
+            }
+
+            );
+    }
 });
