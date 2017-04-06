@@ -1,0 +1,26 @@
+<ion-view title="Perfil">
+	<ion-content>
+		
+        <form class="padding" ng-submit="salvar(usuario)">
+            <ion-list>
+
+            	<label class="item item-input item-stacked-label">
+            	    <span class="input-label">Nome</span>
+            	    <input type="text" placeholder=" Nome Completo" ng-model="usuario.details.name"/>
+            	</label>
+
+            	<label class="item item-input item-stacked-label">
+                	<span class="input-label">Email</span>
+                	<input type="email" placeholder=" e@mail.com" ng-model="usuario.details.email"/>
+            	</label>
+
+
+
+            	<button class="button button-balanced button-block" type="submit">Salvar</button>
+
+            </ion-list>
+        </form>
+
+	</ion-content>
+
+</ion-view>

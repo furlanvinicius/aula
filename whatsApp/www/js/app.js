@@ -1,4 +1,4 @@
-var app = angular.module('WhatsApp', ['ionic']);
+var app = angular.module('WhatsApp', ['ionic', 'ionic.cloud']);
 
 
 app.run(function($ionicPlatform) {
@@ -19,6 +19,20 @@ app.run(function($ionicPlatform) {
   });
 })
 
+
+//CLOUD IONIC
+app.config(function($stateProvider, $urlRouterProvider, $ionicCloudProvider){
+
+  $ionicCloudProvider.init({
+    "core": {
+      "app_id": "58cf5e4c"
+    }
+  })
+})
+//fim do cloud
+
+
+//ROTAS
 app.config(function($stateProvider, $urlRouterProvider){
   $stateProvider.state('usuario-lista', {
     url: '/usuario-lista',
@@ -38,6 +52,46 @@ app.config(function($stateProvider, $urlRouterProvider){
     controller: 'UsuarioUpdateCtrl'
   });
 
-  $urlRouterProvider.otherwise('/usuario-lista')
+  $stateProvider.state('registro', {
+    url: '/registro',
+    templateUrl: 'templates/registro.html',
+    controller: 'RegistroCtrl'
+  });
+
+  $stateProvider.state('login', {
+    url: '/login',
+    templateUrl: 'templates/login.html',
+    controller: 'LoginCtrl'
+  });
+
+  $stateProvider.state('tabs', {
+    abstract: true,
+    url: '/tabs',
+    templateUrl: 'templates/tabs.html',
+    controller: 'TabsCtrl'
+  });
+
+
+
+  $stateProvider.state('tabs.perfil', {
+    url: '/perfil',
+    views: {
+      "tab-perfil" : {
+        templateUrl: 'templates/perfil.html',
+        controller: 'PerfilCtrl'
+      }
+    }
+  });
+
+  $stateProvider.state('tabs.mensagens', {
+    url: '/mensagens',
+    views: {
+      "tab-mensagens" : {
+        templateUrl: 'templates/mensagens.html',
+      }
+    }
+  });
+
+  $urlRouterProvider.otherwise('/login')
 });
 

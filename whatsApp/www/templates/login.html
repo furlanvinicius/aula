@@ -1,0 +1,24 @@
+<ion-view title="Login">
+	<ion-content>
+		
+        <form class="padding" name="formLogin" ng-submit="login(usuario)">
+            <ion-list>
+
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">Email</span>
+                <input type="email" placeholder=" e@mail.com" ng-model="usuario.email" required/>
+            </label>
+
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">password</span>
+                <input type="password" placeholder=" Senha!" ng-model="usuario.password" required/>
+            </label>
+
+            <button class="button button-balanced button-block" ng-disabled="formLogin.$invalid" type="submit">Login</button>
+
+            </ion-list>
+        </form>
+
+	</ion-content>
+
+</ion-view>
