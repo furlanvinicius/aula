@@ -58,6 +58,7 @@ app.config(function($stateProvider, $urlRouterProvider){
     controller: 'RegistroCtrl'
   });
 
+
   $stateProvider.state('login', {
     url: '/login',
     templateUrl: 'templates/login.html',
@@ -92,6 +93,8 @@ app.config(function($stateProvider, $urlRouterProvider){
     }
   });
 
-  $urlRouterProvider.otherwise('/login')
+  //$urlRouterProvider.otherwise('/login')
+  $urlRouterProvider.otherwise('/registro')
+
 });
 

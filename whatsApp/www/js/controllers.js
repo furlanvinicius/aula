@@ -67,7 +67,6 @@ app.controller('RegistroCtrl', function($scope, $ionicAuth) {
                 } 
                 console.log(error);
             }
-
         );
     }
 });
@@ -101,5 +100,5 @@ app.controller('PerfilCtrl', function($scope, $ionicUser){
         $ionicUser = usuario;
         $ionicUser.save();
     }
-
+    
 });
