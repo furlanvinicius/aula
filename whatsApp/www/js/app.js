@@ -1,4 +1,4 @@
-var app = angular.module('WhatsApp', ['ionic', 'ionic.cloud']);
+var app = angular.module('WhatsApp', ['ionic', 'ionic.cloud', 'firebase']);
 
 
 app.run(function($ionicPlatform) {
@@ -93,8 +93,19 @@ app.config(function($stateProvider, $urlRouterProvider){
     }
   });
 
+  $stateProvider.state('tabs.usuarios', {
+    url: '/usuarios',
+    views: {
+      "tab-usuarios" : {
+        templateUrl: 'templates/usuarios.html',
+        controller: 'UsuariosCtrl'
+      }
+    }
+  });
+
+
   //$urlRouterProvider.otherwise('/login')
-  $urlRouterProvider.otherwise('/registro')
+  $urlRouterProvider.otherwise('/login')
 
 });
 

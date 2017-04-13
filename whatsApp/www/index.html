@@ -29,7 +29,23 @@
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
+    
 
+    <script src="lib/firebase/firebase.js"></script>
+    <script src="lib/firebase/angularfire.min.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCOMMO9eG6_X68N0g3epuQQQKen8qFf6NM",
+        authDomain: "whatsapp-ea9c3.firebaseapp.com",
+        databaseURL: "https://whatsapp-ea9c3.firebaseio.com",
+        projectId: "whatsapp-ea9c3",
+        storageBucket: "whatsapp-ea9c3.appspot.com",
+        messagingSenderId: "34374083168"
+      };
+      firebase.initializeApp(config);
+    </script>
+    
     <!-- your app's js -->
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>

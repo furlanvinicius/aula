@@ -51,12 +51,17 @@ app.controller('UsuarioUpdateCtrl',
 });
 
 //controler de registro
-app.controller('RegistroCtrl', function($scope, $ionicAuth) {
+app.controller('RegistroCtrl', function($scope, $ionicAuth, $state, $ionicPopup, $firebaseArray) {
 
     $scope.salvar = function(usuario){
         $ionicAuth.signup(usuario).then(
             function(){
-                alert('cadastrado');
+
+                var ref = firebase.database().ref('users');
+                delete usuario.password;
+                $firebaseArray(ref).$add(usuario).then(function(){
+                    $state.go('login');
+                });
             },
             function(error) {
                 if (error.details[0] == "required_email") {
@@ -83,7 +88,7 @@ app.controller('LoginCtrl', function($scope, $state, $ionicAuth, $ionicUser){
             $ionicUser.set('data', new Date().toISOString());
             $ionicUser.save();
 
-            $state.go('tabs.perfil');
+            $state.go('tabs.usuarios');
         });
     }
 });
@@ -93,7 +98,7 @@ app.controller('TabsCtrl', function($scope){
 
 });
 
-app.controller('PerfilCtrl', function($scope, $ionicUser){
+app.controller('PerfilCtrl', function($scope, $ionicUser, $state, $ionicAuth){
     $scope.usuario = $ionicUser;
 
     $scope.salvar = function(usuario){
@@ -101,4 +106,20 @@ app.controller('PerfilCtrl', function($scope, $ionicUser){
         $ionicUser.save();
     }
     
+    $scope.logout = function(){
+        $ionicAuth.logout();
+        $state.go('login');
+    }
 });
+
+
+app.controller('UsuariosCtrl', function($scope, $firebaseArray){
+
+    var ref = firebase.database().ref('users');
+
+    $scope.users = $firebaseArray(ref);
+})
+
+app.controller('MensagensCtrl', function($scope){
+
+})
